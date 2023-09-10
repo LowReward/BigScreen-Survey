@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SurveyController;
+use App\Http\Controllers\QuestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +21,4 @@ use App\Http\Controllers\SurveyController;
 });*/
 
 
-Route::get('/sondage', [SurveyController::class,'showSurvey'])->name('survey.show');
+Route::get('/questions', [SurveyController::class, 'index']);
