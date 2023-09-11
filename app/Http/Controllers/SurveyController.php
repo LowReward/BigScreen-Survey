@@ -8,5 +8,5 @@ use App\Models\Question;
 
 class SurveyController extends Controller
 {
-    //
+    
 }
