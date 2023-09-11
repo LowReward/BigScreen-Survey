@@ -33,6 +33,7 @@
             </div>
           </div>
         </div>
+        <button class="btn btn-primary" @click="submitForm">Valider</button>
       </div>
     </div>
   </template>
