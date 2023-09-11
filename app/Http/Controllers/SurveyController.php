@@ -8,5 +8,10 @@ use App\Models\Question;
 
 class SurveyController extends Controller
 {
-    
+    public function index()
+{
+    $questions = Question::all();
+    return response()->json($questions);
+}
+
 }
