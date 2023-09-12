@@ -45,13 +45,19 @@
 
   import { ref, onMounted } from 'vue';
   import axios from 'axios';
+  import ThanksMessage from  './addons/ThanksMessage.vue'
   
 
   // Première tentative pour l'index vue
+
+
   const questions = ref([]);
   const textInput = {};
   const selectedOptions = {};
   const numericInput = {};
+  const ShowThanks = false;
+
+  
   
   onMounted(async () => {
     try {
@@ -99,6 +105,7 @@
     } catch (error) {
       console.error(error);
     }
+    
   };
   </script>
   
