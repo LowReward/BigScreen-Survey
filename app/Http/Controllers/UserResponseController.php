@@ -55,6 +55,6 @@ class UserResponseController extends Controller
         }
 
         // Retourne un message de succès pour la réponse en attendant de traiter le reste
-        return response()->json(['message' => 'Réponses enregistrées avec succès']);
+        return response()->json(['message' => 'Successfully registered answers', 'unique_url' => $uniqueUrl]);
     }
 }
