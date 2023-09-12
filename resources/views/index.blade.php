@@ -13,8 +13,7 @@
     <main id="app">
         <router-view></router-view>
     </main>
-    
-    ok
+    <footer></footer>
     @vite('resources/js/app.js')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 
