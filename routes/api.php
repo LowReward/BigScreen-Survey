@@ -22,4 +22,4 @@ use App\Http\Controllers\UserResponseController;
 
 
 Route::get('/questions', [SurveyController::class, 'index']);
-Route::post('/save-responses', [UserResponseController::class, 'XXXXX']);
+Route::post('/save-responses', [UserResponseController::class, 'store']);
