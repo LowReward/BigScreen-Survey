@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\UserResponse;
+use Illuminate\Support\Str;
 
 class UserResponseController extends Controller
 {
     public function store(Request $request)
     {
         $responses = $request->input('responses');
-
+        $uniqueUrl = Str::uuid(); // Génére un UUID ( Universally unique identifier ) propre aux réponses d'un utilisateur 
         
         // Pour chacune des réponses
         foreach ($responses as $response) {
@@ -27,6 +28,7 @@ class UserResponseController extends Controller
                     UserResponse::create([
                         'question_id' => $questionId,
                         'response_option_ids' => $responseOptionIds,
+                        'unique_url' => $uniqueUrl,
                     ]);
                     break;
 
@@ -36,6 +38,7 @@ class UserResponseController extends Controller
                     UserResponse::create([
                         'question_id' => $questionId,
                         'response_text' => $responseText,
+                        'unique_url' => $uniqueUrl,
                     ]);
                     break;
                 
@@ -45,6 +48,7 @@ class UserResponseController extends Controller
                     UserResponse::create([
                         'question_id' => $questionId,
                         'response_numeric' => $responseNumeric,
+                        'unique_url' => $uniqueUrl,
                     ]);
                     break;
             }
