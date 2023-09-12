@@ -11,7 +11,7 @@ class Question extends Model
     protected $fillable = ['title', 'body', 'type', 'options'];
 
     protected $casts = [
-        'options' => 'json',
+        'options' => 'json', // traitement de la réponse en json pour les types A
     ];
 
 }
