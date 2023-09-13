@@ -20,3 +20,5 @@ Route::get('/', function () {
 Route::get('/hello', function () {
     return view('index');
 });
+
+Route::get('/view-responses/{uuid}', 'UserResponseController@viewResponses'); //vue à créer ensuite sur le blade d'index.
