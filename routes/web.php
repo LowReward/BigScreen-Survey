@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserResponseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +22,6 @@ Route::get('/hello', function () {
     return view('index');
 });
 
-Route::get('/view-responses/{uuid}', 'UserResponseController@viewResponses'); //vue à créer ensuite sur le blade d'index.
+Route::get('/view-responses/{uuid}', function () {
+    return view('index');
+}); //vue à créer ensuite sur le blade d'index.

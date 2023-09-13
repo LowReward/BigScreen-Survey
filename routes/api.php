@@ -23,3 +23,4 @@ use App\Http\Controllers\UserResponseController;
 
 Route::get('/questions', [SurveyController::class, 'index']);
 Route::post('/save-responses', [UserResponseController::class, 'store']);
+Route::get('/view-responses/{uuid}', [UserResponseController::class, 'viewResponses']);

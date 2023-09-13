@@ -57,4 +57,20 @@ class UserResponseController extends Controller
         // Retourne un message de succès pour la réponse en attendant de traiter le reste
         return response()->json(['message' => 'Successfully registered answers', 'unique_url' => $uniqueUrl]);
     }
+
+    public function viewResponses($uuid)
+    {
+        // Récupére les réponses associées à l'UUID depuis la base de données
+        $responses = UserResponse::where('unique_url', $uuid)->get();
+
+        // Vérifie si des réponses ont été trouvées
+        if ($responses->isEmpty()) {
+            // Gére le cas où aucune réponse n'a été trouvée pour cet UUID (par exemple, affichez un message d'erreur)
+            return view('responses.not_found');
+        }
+
+        // Renvoie les réponses à la vue appropriée pour les afficher
+        return response()->json($responses);
+    }
+
 }
