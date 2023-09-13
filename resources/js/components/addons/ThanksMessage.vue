@@ -9,7 +9,7 @@
   <script>
   export default {
     props: {
-      uuid: String // Définissez le type de la prop en fonction de votre modèle de données
+      uuid: String // Props reçu de parent SurveyIndex
     }
   };
   </script>
