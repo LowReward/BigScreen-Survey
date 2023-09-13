@@ -4,7 +4,7 @@
     <div class="container mt-5">
       <div class="jumbotron">
         <!-- Affiche notre composant ThanksMessage avoir à faire de redirection grace à un toggle -->
-        <thanks-message v-if="showThanksMessage"></thanks-message>
+        <thanks-message v-if="showThanksMessage" :uuid="responseUuid"></thanks-message>
         <div v-else>
           <div class="bg-secondary">
             <h1 class="display-4">Bienvenue sur Bigscreen</h1>
@@ -58,6 +58,7 @@
   const selectedOptions = {};
   const numericInput = {};
   const showThanksMessage = ref(false); // Booléen servant à faire switcher notre composant
+  const responseUuid = ref('');
   
   onMounted(async () => {
     try {
@@ -101,9 +102,10 @@
       }
   
       // Envoie des réponses au serveur
-      await axios.post('/api/save-responses', { responses });
+      const response = await axios.post('/api/save-responses', { responses });
       // Passe la valeur de notre booléen à true afin d'afficher le message de remerciement contenue dans notre ThanksMessage.vue
       showThanksMessage.value = true;
+      responseUuid.value = response.data.unique_url;
     } catch (error) {
       console.error(error);
     }
