@@ -25,3 +25,5 @@ Route::get('/hello', function () {
 Route::get('/view-responses/{uuid}', function () {
     return view('index');
 }); //vue à créer ensuite sur le blade d'index.
+
+
