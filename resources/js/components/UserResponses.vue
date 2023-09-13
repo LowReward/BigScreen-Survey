@@ -3,8 +3,10 @@
       <!-- Affiche les réponses ici -->
       <div v-for="(response, index) in userResponses" :key="index">
         <!-- Affiche les détails de chaque réponse | Pour l'instant en simple test -->
-        <p>{{ response.question_id }}</p>
+        <p>{{ response.question_title }}</p>
         <p>{{ response.response_text }}</p>
+        <!-- WAAAAARRRRRRNNNNNN Problème de valeur à corriger, actuellement uniquement "true" est stocké dans la table au lieu de la réponse selected -->
+        <p>{{ response.response_option_ids }}</p>
         <p>{{ response.response_numeric }}</p>
         <!-- ... autres détails à rajouter ... -->
       </div>

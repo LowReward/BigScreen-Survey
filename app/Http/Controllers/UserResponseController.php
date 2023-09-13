@@ -61,7 +61,12 @@ class UserResponseController extends Controller
     public function viewResponses($uuid)
     {
         // Récupére les réponses associées à l'UUID depuis la base de données
-        $responses = UserResponse::where('unique_url', $uuid)->get();
+        // On join la table des questions avec clé étrange 'question_id' pour sélectionner le title
+        $responses = UserResponse::where('unique_url', $uuid)
+        ->join('questions', 'user_responses.question_id', '=', 'questions.id')
+        ->select('user_responses.*', 'questions.body as question_title')
+        ->get();
+
 
         // Vérifie si des réponses ont été trouvées
         if ($responses->isEmpty()) {
