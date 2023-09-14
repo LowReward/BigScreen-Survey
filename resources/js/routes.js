@@ -2,6 +2,7 @@ import SurveyIndex from './components/SurveyIndex.vue'
 import HelloAll from './components/HelloAll.vue'
 import UserResponses from './components/UserResponses.vue'
 import LoginPage from './components/admin/LoginPage.vue'
+import DashboardPage from './components/admin/DashboardPage.vue'
 
 
 export default[
@@ -25,4 +26,10 @@ export default[
         name:'LoginPage',
         component : LoginPage,
     },
+    {
+        path: '/',
+        name: 'Dashboard',
+        component: DashboardPage,
+        meta: {requiresAuth: true}
+    }
 ]

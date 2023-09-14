@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\UserResponseController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,6 @@ use App\Http\Controllers\UserResponseController;
 Route::get('/questions', [SurveyController::class, 'index']);
 Route::post('/save-responses', [UserResponseController::class, 'store']);
 Route::get('/view-responses/{uuid}', [UserResponseController::class, 'viewResponses']);
-Route::post('login',[AuthController::class, 'authenticate']);
+Route::post('login',[AuthController::class, 'login']);
 Route::get('dashboard', [AuthController::class, 'dashboard'])
     ->middleware('auth:sanctum');
