@@ -89,15 +89,19 @@ class UserResponseController extends Controller
     return response()->json($reponsesGrouped);
 }
 
-    public function ResponsesCharts()
+public function ResponsesCharts(Request $request)
 {
-    // Récupére les réponses regroupées par UUID avec les informations de la question associée
-    $reponsesGrouped = UserResponse::with('question')
-        ->orderBy('unique_url')
-        ->get()
-        ->groupBy('unique_url');
+    // Récupére les réponses pour les questions 6, 7, 10, 11, 12, 13, 14 et 15
+    $question6Responses = UserResponse::where('question_id', 6)->get();
+    $question7Responses = UserResponse::where('question_id', 7)->get();
+    $question10Responses = UserResponse::where('question_id', 10)->get();
+    $question11Responses = UserResponse::where('question_id', 11)->get();
+    $question12Responses = UserResponse::where('question_id', 12)->get();
+    $question13Responses = UserResponse::where('question_id', 13)->get();
+    $question14Responses = UserResponse::where('question_id', 14)->get();
+    $question15Responses = UserResponse::where('question_id', 15)->get();
 
-    return response()->json($reponsesGrouped);
+    
 }
 
 
