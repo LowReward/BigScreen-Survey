@@ -51,6 +51,7 @@ export default {
                     //Récupération du token dans la réponse et ensuite store dans le state user token ( Vuex )
                     store.state.user.token = response.data.token;
                     console.log(store.state.user.token);
+                    localStorage.setItem('auth_token',store.state.user.token); // Place le token dans le localstorage afin d'utiliser le token sur nos transitions 
 
                     //localStorage.setItem('token', response.data.token); // Stocke le token dans le stockage local
                     this.$router.push('/administration/dashboard'); // Redirige vers la page des paires dans l'administration
