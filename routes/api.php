@@ -33,3 +33,6 @@ Route::get('/questions-list', [SurveyController::class, 'index'])
     ->middleware('auth:sanctum');
 Route::get('/responses-list', [SurveyController::class, 'index'])
     ->middleware('auth:sanctum');
+
+Route::get('/reponses-grouped', [UserResponseController::class, 'getReponsesGroupedByUUID'])
+    ->middleware('auth:sanctum');

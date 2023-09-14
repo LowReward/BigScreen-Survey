@@ -78,4 +78,17 @@ class UserResponseController extends Controller
         return response()->json($responses);
     }
 
+    public function getReponsesGroupedByUUID()
+{
+    // Récupére les réponses regroupées par UUID avec les informations de la question associée
+    $reponsesGrouped = UserResponse::with('question')
+        ->orderBy('unique_url')
+        ->get()
+        ->groupBy('unique_url');
+
+    return response()->json($reponsesGrouped);
+}
+
+
+
 }
