@@ -21,7 +21,7 @@
   </template>
   
   <script>
-  import axios from 'axios';
+   import axiosClient from '../../plugins/axios.js';
   
   export default {
     data() {
@@ -31,7 +31,7 @@
     },
     mounted() {
       // Effectue une requête Axios GET pour récupérer les questions depuis votre API
-      axios.get('/api/questions-list')
+      axiosClient.get('/api/questions-list')
         .then(response => {
           this.questions = response.data; // Met à jour le tableau avec les questions récupérées
         })
