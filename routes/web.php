@@ -26,4 +26,6 @@ Route::get('/view-responses/{uuid}', function () {
     return view('index');
 }); //vue à créer ensuite sur le blade d'index.
 
-
+Route::get('/administration', function () {
+    return view('admin/login');
+});

@@ -1,6 +1,7 @@
 import SurveyIndex from './components/SurveyIndex.vue'
 import HelloAll from './components/HelloAll.vue'
 import UserResponses from './components/UserResponses.vue'
+import LoginPage from './components/admin/LoginPage.vue'
 
 
 export default[
@@ -19,4 +20,9 @@ export default[
         name: 'user-responses',
         component: UserResponses,
       },
+      {
+        path:'/administration',
+        name:'LoginPage',
+        component : LoginPage,
+    },
 ]
