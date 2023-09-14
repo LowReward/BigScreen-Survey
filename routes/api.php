@@ -23,8 +23,13 @@ use App\Http\Controllers\AuthController;
 
 
 Route::get('/questions', [SurveyController::class, 'index']);
+
 Route::post('/save-responses', [UserResponseController::class, 'store']);
 Route::get('/view-responses/{uuid}', [UserResponseController::class, 'viewResponses']);
 Route::post('login',[AuthController::class, 'login']);
 Route::get('dashboard', [AuthController::class, 'dashboard'])
+    ->middleware('auth:sanctum');
+Route::get('/questions-list', [SurveyController::class, 'index'])
+    ->middleware('auth:sanctum');
+Route::get('/responses-list', [SurveyController::class, 'index'])
     ->middleware('auth:sanctum');
