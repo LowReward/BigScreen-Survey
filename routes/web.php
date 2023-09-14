@@ -14,6 +14,11 @@ use App\Http\Controllers\UserResponseController;
 |
 */
 
+Route::view('/administration/dashboard', 'admin/dashboard');
+
+
+Route::view('/administration', 'admin/login')
+    ->where('any', '.*');
 
 Route::view('/administration/{any}', 'admin/login')
     ->where('any', '.*');
