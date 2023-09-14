@@ -14,18 +14,9 @@ use App\Http\Controllers\UserResponseController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
 
-Route::get('/hello', function () {
-    return view('index');
-});
+Route::view('/administration/{any}', 'admin/login')
+    ->where('any', '.*');
 
-Route::get('/view-responses/{uuid}', function () {
-    return view('index');
-}); //vue à créer ensuite sur le blade d'index.
-
-Route::get('/administration', function () {
-    return view('admin/login');
-});
+Route::view('/{any}', 'index')
+    ->where('any', '.*');

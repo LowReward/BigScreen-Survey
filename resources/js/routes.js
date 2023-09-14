@@ -27,9 +27,11 @@ export default[
         component : LoginPage,
     },
     {
-        path: '/',
+        path: '/administration/dashboard',
         name: 'Dashboard',
         component: DashboardPage,
         meta: {requiresAuth: true}
     }
+
+    
 ]
