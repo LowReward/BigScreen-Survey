@@ -14,6 +14,7 @@
 - `php artisan key:generate`
 - `php artisan migrate`
 - `php artisan db:seed`
+- `php artisan serv`
 
 ## Project setup [ VUE.JS ]
 ```
@@ -28,7 +29,7 @@ npm install
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+npm run dev
 ```
 
 ### Compiles and minifies for production if needed
