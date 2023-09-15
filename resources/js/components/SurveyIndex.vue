@@ -18,13 +18,15 @@
                 <p class="card-text text-muted">{{ question.body }}</p>
     
                 <div v-if="question.type === 'A'">
-                  <!-- Question de type A (choix multiple) -->
-                  <div v-for="(option, optionIndex) in question.options" :key="optionIndex" class="form-check">
-                    <input type="checkbox" :name="`question_${question.id}[]`" :value="option" class="form-check-input" v-model="selectedOptions[question.id]">
-                    <label class="form-check-label">{{ option }}</label>
-                  </div>
+                <!-- Question de type A (choix unique) -->
+                <div v-for="(option, optionIndex) in question.options" :key="optionIndex" class="form-check">
+                  <input type="radio" :name="`question_${question.id}`" :value="option" class="form-check-input" v-model="textInput[question.id]">
+                  <label class="form-check-label">{{ option }}</label>
                 </div>
-    
+                <!-- Affichage de l'intitulé de l'option sélectionnée -->
+                <p>Option sélectionnée : {{ textInput[question.id]  }}</p>
+              </div>
+              
                 <div v-else-if="question.type === 'B'">
                   <!-- Question de type B (champ de saisie) -->
                   <input type="text" :name="`question_${question.id}`" class="form-control" :maxlength="255" required v-model="textInput[question.id]">
@@ -55,7 +57,6 @@
   // Première tentative pour l'index vue
   const questions = ref([]);
   const textInput = {};
-  const selectedOptions = {};
   const numericInput = {};
   const showThanksMessage = ref(false); // Booléen servant à faire switcher notre composant
   const responseUuid = ref('');
@@ -74,20 +75,13 @@
       const responses = [];
   
       for (const question of questions.value) {
-        if (question.type === 'A') {
-          // Traitement pour les questions de type A (choix multiples)
-          // Recuperation des réponses sélectionnées depuis selectedOptions
-          responses.push({
-            questionId: question.id,
-            type: 'A',
-            options: selectedOptions[question.id],
-          });
-        } else if (question.type === 'B') {
-          // Traitement pour les questions de type B (champ de saisie)
+
+         if (question.type === 'A' || question.type === 'B') {
+          // Traitement pour les questions de type A ou B (champ de saisie)
           // Recuperation des réponse depuis textInput
           responses.push({
             questionId: question.id,
-            type: 'B',
+            type: question.type,
             responseText: textInput[question.id],
           });
         } else if (question.type === 'C') {

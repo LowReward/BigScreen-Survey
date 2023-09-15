@@ -20,19 +20,10 @@ class UserResponseController extends Controller
             $type = $response['type'];
 
             // Un switch est placé afin de traiter les cas en fonction du type de question 
-            // (Comme par type A sera une option plutot qu'un text)
+            // (Comme par type C sera un int plutot qu'un text)
             switch ($type) {
                 // Cas A
                 case 'A':
-                    $responseOptionIds = $response['options'];
-                    UserResponse::create([
-                        'question_id' => $questionId,
-                        'response_option_ids' => $responseOptionIds,
-                        'unique_url' => $uniqueUrl,
-                    ]);
-                    break;
-
-                // Cas B
                 case 'B':
                     $responseText = $response['responseText'];
                     UserResponse::create([

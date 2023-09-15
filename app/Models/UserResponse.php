@@ -14,11 +14,6 @@ class UserResponse extends Model
         'unique_url',
         'response_text',
         'response_numeric',
-        'response_option_ids',
-    ];
-
-    protected $casts = [
-        'response_option_ids' => 'json', // traitement de la réponse en json pour les types A
     ];
 
     public function question()

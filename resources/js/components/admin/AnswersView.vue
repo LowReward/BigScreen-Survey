@@ -17,9 +17,8 @@
               <td>{{ reponse.question.body }}</td>
               <td>
                 <!-- Vérifie le type de réponse et affichez la valeur appropriée -->
-                <span v-if="reponse.question.type === 'B'">{{ reponse.response_text }}</span>
+                <span v-if="reponse.question.type === 'B' || reponse.question.type === 'A'">{{ reponse.response_text }}</span>
                 <span v-else-if="reponse.question.type === 'C'">{{ reponse.response_numeric }}</span>
-                <span v-else-if="reponse.question.type === 'A'">{{ reponse.response_option_ids }}</span>
               </td>
             </tr>
           </tbody>

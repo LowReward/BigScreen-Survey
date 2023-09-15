@@ -13,13 +13,11 @@ return new class extends Migration
     {
         Schema::create('user_responses', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('question_id');
-            $table->string('unique_url')->nullable();
-            $table->text('response_text')->nullable(); // Pour les questions de type B
-            $table->integer('response_numeric')->nullable(); // Pour les questions de type C
-            $table->json('response_option_ids')->nullable(); // Pour les questions de type A
+            $table->unsignedBigInteger('question_id'); // ID de la question lié
+            $table->string('unique_url')->nullable(); // UUID stocké, propre à un formulaire
+            $table->text('response_text')->nullable(); // Pour les questions de type A et B puisque l'énoncé demande à afficher les réponses en texte
+            $table->integer('response_numeric')->nullable(); // Pour les questions de type C - plus simple d'avoir un int pour calculer la moyenne
             $table->timestamps();
-
             $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
         });
     }
