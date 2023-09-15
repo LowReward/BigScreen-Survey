@@ -1,18 +1,26 @@
 <template>
-    <div>
-      <!-- Affiche les réponses ici -->
-      <div v-for="(response, index) in userResponses" :key="index">
-        <!-- Affiche les détails de chaque réponse | Pour l'instant en simple test -->
-        <p>{{ response.question_title }}</p>
-        <p>{{ response.response_text }}</p>
-        <!-- WAAAAARRRRRRNNNNNN Problème de valeur à corriger, actuellement uniquement "true" est stocké dans la table au lieu de la réponse selected -->
-        <p>{{ response.response_option_ids }}</p>
-        <p>{{ response.response_numeric }}</p>
-        <!-- ... autres détails à rajouter ... -->
-      </div>
+  <div class="mt-4 mb-4 d-flex ">
+    <div class="jumbotron">
+        <div >
+          <h1 class="display-4">Merci d'avoir précedemment participer à notre sondage</h1>
+          <!-- Texte à revoir selon le brief -->
+          <p class="lead">Voici un rappel de vos réponses :</p>
+        </div>
+        <div v-for="(response, index) in userResponses" :key="index" class="mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">{{ response.question_title }}</h4>
+              <div>
+                <p class="card-text text-muted">{{ response.response_text }}</p>
+                <p class="card-text text-muted">{{ response.response_numeric }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
-  </template>
-  
+  </div>
+</template>
+
   <script>
   import axios from 'axios';
   
