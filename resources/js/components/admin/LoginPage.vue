@@ -4,6 +4,10 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
+                        <!-- Logo placé en haut -->
+                        <div class="d-flex justify-content-center mb-4">
+                            <img src="../../../assets/logo.png" alt="Logo Bigscreen" class="logo" style="max-width: 100px;">
+                        </div>
                         <h3 class="card-title">Connexion</h3>
                         <form @submit.prevent="login">
                             <div class="mb-3">
@@ -24,6 +28,7 @@
         </div>
     </div>
 </template>
+
   
   
 <script>

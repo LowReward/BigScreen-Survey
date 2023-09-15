@@ -18,5 +18,9 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        // Appelle les seeders spécifiques pour remplir les tables correspondantes
+        $this->call(AdminTableSeeder::class); // Appelle le seeder pour la table 'admins'
+        $this->call(QuestionsTableSeeder::class); // Appelle le seeder pour la table 'questions'
+        $this->call(UserResponsesTableSeeder::class); // Appelle le seeder pour la table 'user_responses'
     }
 }

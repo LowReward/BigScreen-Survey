@@ -31,13 +31,17 @@
                 </div>
     
                 <div v-else-if="question.type === 'C'">
-                  <!-- Question de type C (choix numérique) -->
-                  <input type="number" :name="`question_${question.id}`" class="form-control" :min="1" :max="5" required v-model="numericInput[question.id]">
-                </div>
+                <!-- Question de type C (choix numérique) -->
+                <label>(Entre 1 et 5)</label>
+                <input type="number" :name="`question_${question.id}`" class="form-control" :min="1" :max="5" required v-model="numericInput[question.id]" @input="validateNumericInput(question.id)">
+              </div>
+
               </div>
             </div>
           </div>
-          
+          <div v-if="errorMessage" class="alert alert-danger mt-3">
+          {{ errorMessage }}
+        </div>
           <button class="btn btn-primary mb-4" @click="submitForm">Valider</button>
         </div>
       </div>
@@ -58,6 +62,7 @@
   const numericInput = {};
   const showThanksMessage = ref(false); // Booléen servant à faire switcher notre composant
   const responseUuid = ref('');
+  const errorMessage = ref(''); 
   
   onMounted(async () => {
     try {
@@ -100,6 +105,12 @@
       responseUuid.value = response.data.unique_url;
     } catch (error) {
       console.error(error);
+      // Si le serveur renvoie une réponse 400, définissez le message d'erreur
+      if (error.response && error.response.status === 400) {
+        errorMessage.value = 'Veuillez uniquement saisir des valeurs entre 1 à 5 .';
+      } else {
+        errorMessage.value = 'Une erreur s\'est produite lors de l\'envoi du formulaire, veuillez remplir tous les champs.';
+      }
     }
   };
   </script>

@@ -1,53 +1,92 @@
 <template>
-<div class="container-fluid">
-    <div class="row">
-        <!-- Barre de navigation fixe à gauche -->
-        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark sidebar">
-            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white ">
-                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                    <span class="fs-5 d-none d-sm-inline">Menu</span>
-                </a>
-                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                    <li class="nav-item">
-                        <router-link :to="{ name: 'home-view' }" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Accueil</span>
-                        </router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link :to="{ name: 'questions-view' }" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Questions</span>
-                        </router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link :to="{ name: 'answers-view' }" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Réponses</span>
-                        </router-link>
-                    </li>
-                </ul>
-                <hr>
-            </div>
+    <div>
+      <!-- Barre de navigation fixe à gauche -->
+      <nav class="sidebar">
+        <div class="d-flex align-items-center justify-content-center sidebar-logo">
+          <img src="../../../assets/logo.png" alt="Logo Bigscreen" class="logo">
         </div>
-
-        <!-- Zone de contenu à droite qui peut défiler -->
-        <div class="col py-3" id="app">
-            <router-view></router-view>
-        </div>
+        <ul class="nav flex-column align-items-center">
+          <li class="nav-item">
+            <router-link :to="{ name: 'home-view' }" class="nav-link">
+              <i class="bi bi-house"></i> <span class="d-none d-sm-inline">Accueil</span>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link :to="{ name: 'questions-view' }" class="nav-link">
+              <i class="bi bi-house"></i> <span class="d-none d-sm-inline">Questions</span>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link :to="{ name: 'answers-view' }" class="nav-link">
+              <i class="bi bi-house"></i> <span class="d-none d-sm-inline">Réponses</span>
+            </router-link>
+          </li>
+        </ul>
+      </nav>
+  
+      <!-- Zone de contenu à droite qui peut défiler -->
+      <div class="content">
+        <router-view></router-view>
+      </div>
     </div>
-</div>
-</template>
-
-<script>
-</script>
-
-
-<style>
-.sidebar {
-    min-height: 100vh; /* Hauteur minimale de 100% de la hauteur de la fenêtre */
+  </template>
+  
+  <style scoped>
+  .sidebar {
+    width: 250px;
+    position: fixed;
+    height: 100%;
+    background-color: #343a40;
+    color: white;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-}
-
-.sidebar .flex-grow-1 {
-    flex-grow: 1; /* Le contenu de la sidebar s'étirera pour occuper l'espace restant */
-}
-</style>
+    align-items: center;
+  }
+  
+  .sidebar-logo img {
+    max-width: 80px; 
+    margin-bottom: 20px;
+  }
+  
+  .nav {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+  }
+  
+  .nav-item {
+    margin-bottom: 10px;
+  }
+  
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .nav-link:hover {
+    background-color: #495057;
+  }
+  
+  .content {
+    margin-left: 250px; 
+    padding: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 100%;
+      position: relative;
+      height: auto;
+      padding: 10px;
+    }
+  
+    .content {
+      margin-left: 0;
+    }
+  }
+  </style>
+  

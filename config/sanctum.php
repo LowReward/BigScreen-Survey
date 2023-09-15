@@ -46,7 +46,8 @@ return [
     |
     */
 
-    'expiration' => null,
+    'expiration' => env('SANCTUM_STATEFUL_DOMAINS', 0) ? null : 60, // Durée de validité en minutes (60 minutes = 1 heure)
+
 
     /*
     |--------------------------------------------------------------------------

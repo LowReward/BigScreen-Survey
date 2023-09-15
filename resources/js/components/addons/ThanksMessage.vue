@@ -1,17 +1,28 @@
 <template>
-    <div>
-      <p>Merci d'avoir répondu au questionnaire.</p>
-      <p>Voici votre lien unique pour consulter vos réponses ( un email vous a été envoyé ):</p>
-      <!-- href à revoir pour y ajouer-->
-      <a :href="'http://localhost:8000/view-responses/${uuid}'" target="_blank">http://localhost:8000/view-responses/{{ uuid }}</a>
+  <div class="mt-4 mb-4 d-flex">
+    <div class="jumbotron">
+      <div>
+        <h1 class="display-4">Merci d'avoir répondu au questionnaire.</h1>
+        <p class="lead">Voici votre lien unique pour consulter vos réponses :</p>
+      </div>
+      <div>
+        <!-- Affiche un lien unique généré dynamiquement pour consulter les réponses -->
+        <a :href="viewResponsesUrl" target="_blank">{{ viewResponsesUrl }}</a>
+      </div>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    props: {
-      uuid: String // Props reçu de parent SurveyIndex
-    }
-  };
-  </script>
-  
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    uuid: String, // Propriété pour l'UUID
+  },
+  computed: {
+    viewResponsesUrl() {
+      // Génère dynamiquement l'URL de consultation des réponses en utilisant l'UUID
+      return `http://localhost:8000/view-responses/${this.uuid}`;
+    },
+  },
+};
+</script>
