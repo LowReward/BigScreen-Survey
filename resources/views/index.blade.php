@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,13 +16,6 @@
             max-width: 200px; /* Ajuste la largeur du logo */
             margin-bottom: 20px; /* Espace sous le logo */
         }
-        .footer {
-            /* Styles pour le footer */
-            background-color: #343a40; /* Couleur de fond du footer */
-            color: white; /* Couleur du texte du footer */
-            padding: 10px; /* Espace intérieur du footer */
-            text-align: center; /* Centrer le texte du footer */
-        }
     </style>
 </head>
 <body>
@@ -36,8 +29,10 @@
             <router-view></router-view>
         </div>
     </main>
-    <footer class="footer">
-        Explorez Demain, Aujourd'hui : La VR à son Meilleur.
+    <footer class="footer mt-auto py-3 bg-dark text-center">
+      <div class="container">
+        <span class="text-light">Explorez Demain, Aujourd'hui : La VR à son Meilleur.</span>
+      </div>
     </footer>
     @vite('resources/js/app.js')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>

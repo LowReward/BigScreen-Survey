@@ -17,24 +17,25 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-/*Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});*/
-
-
+// Route pour obtenir la liste des questions
 Route::get('/questions', [SurveyController::class, 'index']);
 
+// Route pour stocker les réponses envoyées par le questionnaire
 Route::post('/save-responses', [UserResponseController::class, 'store']);
+
+// Route pour renvoyer les réponses d'un utilisateur selon son uuid
 Route::get('/view-responses/{uuid}', [UserResponseController::class, 'viewResponses']);
+
+// Route pour la connexion
 Route::post('login',[AuthController::class, 'login']);
-Route::get('dashboard', [AuthController::class, 'dashboard'])
-    ->middleware('auth:sanctum');
-Route::get('/questions-list', [SurveyController::class, 'index'])
-    ->middleware('auth:sanctum');
-Route::get('/responses-list', [SurveyController::class, 'index'])
-    ->middleware('auth:sanctum');
 
-Route::get('/reponses-grouped', [UserResponseController::class, 'getReponsesGroupedByUUID'])
-    ->middleware('auth:sanctum');
 
+// Routes nécessitantes d'être authentifié
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('dashboard', [AuthController::class, 'dashboard']);
+    Route::get('/questions-list', [SurveyController::class, 'index']);
+    Route::get('/responses-list', [SurveyController::class, 'index']);
+    Route::get('/reponses-grouped', [UserResponseController::class, 'getReponsesGroupedByUUID']);
     Route::get('/responses-charts', [UserResponseController::class, 'ResponsesCharts']);
+});
+
