@@ -37,5 +37,4 @@ Route::get('/responses-list', [SurveyController::class, 'index'])
 Route::get('/reponses-grouped', [UserResponseController::class, 'getReponsesGroupedByUUID'])
     ->middleware('auth:sanctum');
 
-    Route::get('/responses-charts', [UserResponseController::class, 'ResponsesCharts'])
-    ->middleware('auth:sanctum');
+    Route::get('/responses-charts', [UserResponseController::class, 'ResponsesCharts']);

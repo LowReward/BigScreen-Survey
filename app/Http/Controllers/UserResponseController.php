@@ -101,7 +101,53 @@ public function ResponsesCharts(Request $request)
     $question14Responses = UserResponse::where('question_id', 14)->get();
     $question15Responses = UserResponse::where('question_id', 15)->get();
 
+    // Compte le nombre de réponses pour chaque option
+    $question6Options = [
+        'Occulus Rift/s' => $question6Responses->where('response_text', 'Occulus Rift/s')->count(),
+        'HTC Vive' => $question6Responses->where('response_text', 'HTC Vive')->count(),
+        'Windows Mixed Reality' => $question6Responses->where('response_text', 'Windows Mixed Reality')->count(),
+        'PSVR' => $question6Responses->where('response_text', 'PSVR')->count()
+    ];
+
+    $question7Options = [
+        'SteamVR' => $question7Responses->where('response_text', 'SteamVR')->count(),
+        'Occulus store' => $question7Responses->where('response_text', 'Occulus store')->count(),
+        'Viveport' => $question7Responses->where('response_text', 'Viveport')->count(),
+        'Playstation VR' => $question7Responses->where('response_text', 'Playstation VR')->count(),
+        'Google Play' => $question7Responses->where('response_text', 'Google Play')->count(),
+        'Windows store' => $question7Responses->where('response_text', 'Windows store')->count(),
+    ];
+
+    $question10Options = [
+        'regarder des émissions TV en direct' => $question10Responses->where('response_text', 'regarder des émissions TV en direct')->count(),
+        'regarder des films' => $question10Responses->where('response_text', 'regarder des films')->count(),
+        'jouer en solo' => $question10Responses->where('response_text', 'jouer en solo')->count(),
+        'jouer en team' => $question10Responses->where('response_text', 'jouer en team')->count()
+    ];
     
+    // Retourne les données sous forme de réponse JSON
+    return response()->json([
+        'question6' => $question6Options,
+        'question7' => $question7Options,
+        'question10' => $question10Options,
+        'quality' => [
+            'question11' => [
+                'average' => $question11Responses->avg('response_numeric'), // Par exemple, la moyenne des réponses numériques
+            ],
+            'question12' => [
+                'average' => $question12Responses->avg('response_numeric'),
+            ],
+            'question13' => [
+                'average' => $question13Responses->avg('response_numeric'),
+            ],
+            'question14' => [
+                'average' => $question14Responses->avg('response_numeric'),
+            ],
+            'question15' => [
+                'average' => $question15Responses->avg('response_numeric'),
+            ],
+        ],
+    ]);
 }
 
 
