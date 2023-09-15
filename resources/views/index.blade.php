@@ -6,12 +6,28 @@
     <title>Bigscreen Survey</title>
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-
+    <style>
+        /* Styles CSS personnalisés */
+        body {
+            background-color: #f8f9fa; /* Couleur de fond de la page */
+        }
+        .logo {
+            /* Styles pour le logo */
+            max-width: 200px; /* Ajuste la largeur du logo */
+            margin-bottom: 20px; /* Espace sous le logo */
+        }
+    </style>
 </head>
 <body>
 
     <main id="app">
-        <router-view></router-view>
+    <div class="container d-flex flex-column align-items-center justify-content-center">
+        <!-- Logo -->
+        <img src="/images/logo.png" alt="Logo Bigscreen" class="logo mt-4">
+            
+            <!-- Insertion des routes Vue.js -->
+            <router-view></router-view>
+        </div>
     </main>
     @vite('resources/js/app.js')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>

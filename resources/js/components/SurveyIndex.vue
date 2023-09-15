@@ -1,12 +1,12 @@
 
 
 <template>
-    <div class="container mt-5">
+    <div class="mt-4">
       <div class="jumbotron">
         <!-- Affiche notre composant ThanksMessage avoir à faire de redirection grace à un toggle -->
         <thanks-message v-if="showThanksMessage" :uuid="responseUuid"></thanks-message>
         <div v-else>
-          <div class="bg-secondary">
+          <div >
             <h1 class="display-4">Bienvenue sur Bigscreen</h1>
             <!-- Texte à revoir selon le brief -->
             <p class="lead">Voici le formulaire à remplir :</p>
@@ -23,10 +23,8 @@
                   <input type="radio" :name="`question_${question.id}`" :value="option" class="form-check-input" v-model="textInput[question.id]">
                   <label class="form-check-label">{{ option }}</label>
                 </div>
-                <!-- Affichage de l'intitulé de l'option sélectionnée -->
-                <p>Option sélectionnée : {{ textInput[question.id]  }}</p>
               </div>
-              
+
                 <div v-else-if="question.type === 'B'">
                   <!-- Question de type B (champ de saisie) -->
                   <input type="text" :name="`question_${question.id}`" class="form-control" :maxlength="255" required v-model="textInput[question.id]">
@@ -40,7 +38,7 @@
             </div>
           </div>
           
-          <button class="btn btn-primary" @click="submitForm">Valider</button>
+          <button class="btn btn-primary mb-4" @click="submitForm">Valider</button>
         </div>
       </div>
     </div>
