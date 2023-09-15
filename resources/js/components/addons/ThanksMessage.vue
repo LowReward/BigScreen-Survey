@@ -3,7 +3,11 @@
     <div class="jumbotron">
       <div>
         <h1 class="display-4">Merci d'avoir répondu au questionnaire.</h1>
-        <p class="lead">Voici votre lien unique pour consulter vos réponses :</p>
+        <p class="lead">toute l’équipe de Bigscreen vous remercie pour votre engagement. Grâce à
+          votre investissement, nous vous préparons une application toujours plus
+          facile à utiliser, seul ou en famille.
+          Si vous désirez consulter vos réponse ultérieurement, vous pouvez consultez
+          cette adresse:</p>
       </div>
       <div>
         <!-- Affiche un lien unique généré dynamiquement pour consulter les réponses -->
